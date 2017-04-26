@@ -340,6 +340,39 @@ class SurveyMonkey
     }
 
     /**
+     * Returns a list of contacts
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+     * @param array $params optional request array
+     * @return array Results
+     */
+    public function getContacts($params = array())
+    {
+        return $this->run('contacts', $params, "GET");
+    }
+
+    /**
+     * Gets the details for a contact
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+     * @param string $contactId Contact ID
+     * @return array Result
+     */
+    public function getContactDetails($contactId)
+    {
+        return $this->run('contacts/' . $contactId, array(), "GET");
+    }
+
+    /**
+     * Deletes a contact
+     * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+     * @param string $contactId Contact ID
+     * @return array Result
+     */
+    public function deleteContact($contactId)
+    {
+        return $this->run('contacts/' . $contactId, array(), "DELETE");
+    }
+
+    /**
      * Creates a message
      * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages
      * @param string $collectorIdID Colector ID
